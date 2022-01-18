@@ -4,6 +4,8 @@ import {AiFillHome, AiFillFolderOpen, AiFillPushpin} from 'react-icons/ai';
 import { MdSettings, MdOutlineBubbleChart, MdSupervisorAccount } from 'react-icons/md';
 import { RiAccountCircleFill } from 'react-icons/ri';
 import { IoLogOut } from 'react-icons/io5';
+import { MdOutlineBarChart } from 'react-icons/md';
+import { useHistory } from 'react-router-dom'
 
 export function Menu() {
 
@@ -14,6 +16,8 @@ export function Menu() {
     const [aba5, setAba5] = useState(false);
     const [aba6, setAba6] = useState(false);
     const [aba7, setAba7] = useState(false);
+    const [aba8, setAba8] = useState(false);
+    const history = useHistory();
 
     return (
         <div className="menu">
@@ -30,6 +34,8 @@ export function Menu() {
                 setAba5(false);
                 setAba6(false);
                 setAba7(false);
+                setAba8(false);
+                history.push('/home');
             }} icon={<AiFillHome/>} redirect="home">Início</Aba>
             <Aba clicked={aba2} 
             onClick={() =>{
@@ -40,7 +46,9 @@ export function Menu() {
                 setAba5(false);
                 setAba6(false);
                 setAba7(false);
-            }} icon={<AiFillFolderOpen/>} redirect="home">Meus Arquivos</Aba>
+                setAba8(false);
+                history.push('/estatisticas');
+            }} icon={<MdOutlineBarChart/>} redirect="home">Estatísticas</Aba>
             <Aba clicked={aba3} 
             onClick={() =>{
                 setAba1(false);
@@ -50,9 +58,11 @@ export function Menu() {
                 setAba5(false);
                 setAba6(false);
                 setAba7(false);
-            }} icon={<AiFillPushpin/>} redirect="home">Salvos</Aba>
+                setAba8(false);
+                history.push('/meus-arquivos');
+            }} icon={<AiFillFolderOpen/>} redirect="home">Meus Arquivos</Aba>
             <Aba clicked={aba4} 
-             onClick={() =>{
+            onClick={() =>{
                 setAba1(false);
                 setAba2(false);
                 setAba3(false);
@@ -60,9 +70,10 @@ export function Menu() {
                 setAba5(false);
                 setAba6(false);
                 setAba7(false);
-            }} icon={<MdSupervisorAccount/>} redirect="home">Amigos</Aba>
+                setAba8(false);
+            }} icon={<AiFillPushpin/>} redirect="home">Salvos</Aba>
             <Aba clicked={aba5} 
-            onClick={() =>{
+             onClick={() =>{
                 setAba1(false);
                 setAba2(false);
                 setAba3(false);
@@ -70,7 +81,8 @@ export function Menu() {
                 setAba5(true);
                 setAba6(false);
                 setAba7(false);
-            }} icon={<RiAccountCircleFill/>} redirect="home">Perfil</Aba>
+                setAba8(false);
+            }} icon={<MdSupervisorAccount/>} redirect="home">Amigos</Aba>
             <Aba clicked={aba6} 
             onClick={() =>{
                 setAba1(false);
@@ -80,7 +92,8 @@ export function Menu() {
                 setAba5(false);
                 setAba6(true);
                 setAba7(false);
-            }} icon={<MdSettings/>} redirect="home">Configurações</Aba>
+                setAba8(false);
+            }} icon={<RiAccountCircleFill/>} redirect="home">Perfil</Aba>
             <Aba clicked={aba7} 
             onClick={() =>{
                 setAba1(false);
@@ -90,6 +103,18 @@ export function Menu() {
                 setAba5(false);
                 setAba6(false);
                 setAba7(true);
+                setAba8(false);
+            }} icon={<MdSettings/>} redirect="home">Configurações</Aba>
+            <Aba clicked={aba8} 
+            onClick={() =>{
+                setAba1(false);
+                setAba2(false);
+                setAba3(false);
+                setAba4(false);
+                setAba5(false);
+                setAba6(false);
+                setAba7(false);
+                setAba8(true);
             }} icon={<IoLogOut/>} redirect="home">Sair</Aba>
         </div>
     )

@@ -1,18 +1,18 @@
 #svg {
-    background: #0075c9;
+  background: #0075c9;
 }
 
-#svg:hover{
-    background: rgb(255, 209, 110);
+#svg:hover {
+  background: rgb(255, 209, 110);
 }
 
 .info {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-  }
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
 
-  #info-data {
-      margin: 10px;
-      font-size: 9px;
-  }
+#info-data {
+  margin: 10px;
+  font-size: 9px;
+}

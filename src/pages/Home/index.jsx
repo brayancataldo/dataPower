@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { Main } from "../../components/Main";
 import "../../global/styles.css";
 import { Menu } from "../../components/Menu";
 import { ModalComponent } from "../../components/Modal";
@@ -29,8 +28,8 @@ export function Home() {
 
   return (
     <>
-    <body class="container">
-    </body>
+      <Menu/>
+    <main>Home</main>
     </>
   );
 }

@@ -1,0 +1,23 @@
+#svg-retangulo {
+  background: #0075c9;
+}
+
+#svg-retangulo:hover {
+  background: #768087;
+}
+
+.info-retangulo {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.link {
+  color: #ffffff;
+}
+
+.perc {
+  font-size: 70px;
+  font-weight: 600;
+  color: #333333;
+}

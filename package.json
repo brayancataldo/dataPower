@@ -12,7 +12,7 @@
     "@testing-library/user-event": "^12.1.10",
     "axios": "^0.24.0",
     "firebase": "^9.2.0",
-    "query-tool": "^1.0.1",
+    "query-tool": "^2.0.1",
     "react": "^17.0.2",
     "react-bootstrap": "^2.0.1",
     "react-dom": "^17.0.2",
