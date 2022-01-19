@@ -69,7 +69,6 @@ export default function Cotacao() {
   return (
     <>
       <Menu />
-      <title>Cotacao</title>
       <main>
         {loading ? (
           <Progress />
@@ -95,7 +94,6 @@ export default function Cotacao() {
                 onChange={(e) => setDataFim(e.target.value)}
                 value={dataFim}
               />
-              {/* <input type="select" className="input" /> */}
               <button onClick={getCovidData} className="input">
                 Enviar
               </button>

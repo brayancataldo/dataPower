@@ -1,11 +1,14 @@
-/* eslint-disable */
-import React from 'react'
-import { Button, Modal } from 'react-bootstrap'
+import React from "react";
+import "./styles.css";
 
-export function ModalComponent(props) {
-    return (
-       <div className="modal">
-         Modal
-       </div>
-    )
+export function Modal({ children, show }) {
+  return (
+    <>
+      {show && (
+        <div className="modal-container">
+          <div className="modal">{children}</div>
+        </div>
+      )}
+    </>
+  );
 }

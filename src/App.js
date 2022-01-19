@@ -5,20 +5,23 @@ import Cotacao from "./pages/Cotacao";
 import { Home } from "./pages/Home";
 import RSSReader from "./components/RSSReader";
 import { Estatisticas } from './pages/Estatisticas'
-import { Login } from "./pages/Login";
+import { Cadastro } from "./pages/Login";
+import { Perfil } from "./pages/Perfil";
 
 function App() {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/" exact={true} component={Home} />
-        <Route path="/login" exact={true} component={Login} />
-        <Route path="/configuracoes" component={Home} />
-        <Route path="/home" component={Home} />
-        <Route path="/covid" component={Covid} />
-        <Route path="/cotacao" component={Cotacao} />
-        <Route path="/rss" component={RSSReader} />
-        <Route path="/estatisticas" component={Estatisticas} />
+        <Route path="/" exact={true} component={Cadastro} />
+        <Route path="/cadastrar" exact={true} component={Cadastro} />
+        {/* <Route path="/login" exact={true} component={Cadastro} /> */}
+        <Route path="/configuracoes" exact={true} component={Home} />
+        <Route path="/home" exact={true} component={Home} />
+        <Route path="/covid" exact={true} component={Covid} />
+        <Route path="/cotacao" exact={true} component={Cotacao} />
+        <Route path="/rss" exact={true} component={RSSReader} />
+        <Route path="/estatisticas" exact={true} component={Estatisticas} />
+        <Route path="/:username" component={Perfil} />
       </Switch>
     </BrowserRouter>
   );

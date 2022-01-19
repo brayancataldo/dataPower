@@ -276,11 +276,6 @@ div:hover.tooltips span {
 
 .login {
   display: flex;
-  width: 300px;
-  height: 400px;
-  margin-right: 10em;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
   background: #e9f0f8;
   border-radius: 12px;
@@ -291,5 +286,32 @@ div:hover.tooltips span {
     inset -2px -2px 5px rgba(255, 255, 255, 0.9),
     inset 2px 2px 5px rgba(209, 217, 230, 0.9);
   padding: 20px;
+  padding-right: 50px;
+  padding-left: 50px;
   color: #333333;
+}
+
+.input2 {
+  color: #768087;
+  margin-top: 20px;
+  width: 250px;
+  padding: 10px;
+  background: #e9f0f8;
+  outline: 0;
+  border-color: rgba(202, 202, 202, 0.5);
+  border-bottom: 1;
+  border-left: 0;
+  border-right: 0;
+  border-top: 0;
+}
+
+.button {
+  color: #768087;
+  font-weight: 600;
+  margin: 15px;
+  margin-top: 35px;
+  background: #e9f0f8;
+  border-radius: 12px;
+  outline: 0;
+  border: 0;
 }

@@ -2,11 +2,13 @@ import React, { useEffect } from "react";
 import { Menu } from "../../components/Menu";
 import "../../global/styles.css";
 import { MdCoronavirus } from "react-icons/md";
-import { useHistory } from "react-router-dom";
 import { AiFillDollarCircle } from "react-icons/ai";
+import { Redirect, useHistory } from "react-router-dom";
+import { getCookieSessionData } from "../../service/usuario";
 
 export function Estatisticas() {
   const history = useHistory();
+  const nome = getCookieSessionData();
 
   return (
     <>
@@ -41,6 +43,7 @@ export function Estatisticas() {
           </div>
         </div>
       </main>
+      {!nome ? <Redirect push to="/cadastrar" /> : null}
     </>
   );
 }

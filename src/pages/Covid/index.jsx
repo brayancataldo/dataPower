@@ -10,16 +10,24 @@ import axios from "axios";
 
 export default function Covid() {
   const [casos, setCasos] = useState();
+  const [data, setData] = useState();
   const [estados, setEstados] = useState();
   const [paises, setPaises] = useState();
   const [searchResults, setSearchResults] = useState();
   const [searchTerm, setSearchTerm] = useState("");
   const [loading, setLoading] = useState(false);
   const [topico, setTopico] = useState("covid");
-  const [dataInicio, setDataInicio] = useState("");
-  const [dataFim, setDataFim] = useState("");
-  const [data, setData] = useState();
+  const [allCases, setAllCases] = useState();
   const [items, setItems] = useState([]);
+  const [numData, setNumData] = useState(10);
+  const currentData = allCases?.slice(0, numData);
+
+  const loadMore = () => {
+    if (numData <= casos.length + 5) {
+      setNumData(numData + 5);
+      console.log(numData);
+    }
+  };
 
   useEffect(() => {
     if (casos && searchTerm.trim() != "") {
@@ -36,7 +44,8 @@ export default function Covid() {
     try {
       const response = await api.get(`/dayone/country/brazil`);
       console.log(response.data);
-      setCasos(response.data);
+      setCasos(response.data.slice(0, 30));
+      setAllCases(response.data);
     } catch (error) {
       console.log(error);
     } finally {
@@ -101,7 +110,7 @@ export default function Covid() {
 
   return (
     <>
-      <Menu/>
+      <Menu />
       <title>Covid</title>
       <main>
         {loading && casos && estados && paises ? (
@@ -115,18 +124,6 @@ export default function Covid() {
                 placeholder="Tópico"
                 onChange={(e) => setTopico(e.target.value)}
                 value={topico}
-              />
-              <input
-                className="input"
-                type="date"
-                onChange={(e) => setDataInicio(e.target.value)}
-                value={dataInicio}
-              />
-              <input
-                className="input"
-                type="date"
-                onChange={(e) => setDataFim(e.target.value)}
-                value={dataFim}
               />
               <select
                 name="select"
@@ -164,8 +161,8 @@ export default function Covid() {
               <Alert data={data} />
             </div>
             <div style={{ display: "flex" }}>
-              <Grafico data={casos} value={"Confirmed"} />
-              <Grafico data={casos} value={"Deaths"} />
+              <Grafico data={allCases} value={"Confirmed"} />
+              <Grafico data={allCases} value={"Deaths"} />
             </div>
             {/* <div>
             <input type="date" onChange={(e) => setSearchTerm(e.target.value)}></input>
@@ -205,7 +202,7 @@ export default function Covid() {
                   </tbody>
                 ) : (
                   <tbody>
-                    {casos.map((each, i) => (
+                    {currentData?.map((each, i) => (
                       <tr key={each.Id}>
                         <td>{`${new Date(each.Date).toLocaleDateString(
                           "pt-br",
@@ -234,6 +231,17 @@ export default function Covid() {
             </table>
           </>
         )}
+        <div
+          style={{ display: "flex", justifyContent: "center", padding: "30px" }}
+        >
+          <button
+            className="input"
+            style={{ width: "150px" }}
+            onClick={loadMore}
+          >
+            Carregar mais
+          </button>
+        </div>
       </main>
     </>
   );

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { handleLongDate } from "../../util/format";
 
 export function GraficoRetangulo(props) {
   const [data, setData] = useState();
@@ -38,16 +39,6 @@ export function GraficoRetangulo(props) {
   }, [props.data]);
 
   if (!props.news) return;
-
-  const handleLongDate = (date) => {
-    const formattedDate = new Date(date);
-    return formattedDate.toLocaleDateString("pt-Br", { dateStyle: "long" });
-  };
-
-  const handleShortDate = (date) => {
-    const formattedDate = new Date(date);
-    return formattedDate.toLocaleDateString("pt-Br", { dateStyle: "short" });
-  };
 
   return (
     <>
