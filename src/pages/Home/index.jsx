@@ -13,7 +13,7 @@ export function Home() {
     <>
       <Menu />
       <main></main>
-      {!nome ? <Redirect push to="/cadastrar" /> : null}
+      {/* {!nome ? <Redirect push to="/cadastrar" /> : null} */}
     </>
   );
 }
