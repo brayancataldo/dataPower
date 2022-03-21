@@ -1,0 +1,32 @@
+.inputGlobal {
+  margin: 5px;
+}
+
+.inputGlobal p {
+  font-size: 12px;
+  color: #333333;
+  margin-bottom: 5px;
+}
+
+.inputGlobal input {
+  color: #768087;
+  width: 250px;
+  background: #e9f0f8;
+  outline: 0;
+  border-color: rgba(202, 202, 202, 0.5);
+  border-bottom: 1;
+  border-left: 0;
+  border-right: 0;
+  border-top: 0;
+}
+
+.inputGlobal #error {
+  font-size: 10px;
+  color: #fd0000;
+  margin-bottom: 5px;
+}
+
+.inputGlobal strong {
+  color: #fd0000;
+  margin-left: 5px;
+}

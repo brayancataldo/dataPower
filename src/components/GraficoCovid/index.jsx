@@ -11,7 +11,6 @@ export function GraficoCovid(props) {
   useEffect(() => {
     if (props.data != undefined) {
       setData(props.data);
-      console.log(props.data);
       setMaiorConfirmed(
         Math.max.apply(
           Math,
@@ -24,9 +23,6 @@ export function GraficoCovid(props) {
         Math.min.apply(
           Math,
           props.data.map(function (o, index) {
-            console.log(
-              o.Confirmed - props.data[index === 0 ? 0 : index - 1]?.Confirmed
-            );
             return o.Confirmed;
           })
         )

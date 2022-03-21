@@ -1,0 +1,13 @@
+.buttonGlobal {
+  background: #333333;
+  padding: 15px;
+  border-radius: 6px;
+  color: white;
+  border: 0;
+  margin: 15px;
+  cursor: pointer;
+}
+
+.buttonGlobal:hover {
+  filter: brightness(70%);
+}

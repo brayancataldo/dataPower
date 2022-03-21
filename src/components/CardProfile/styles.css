@@ -1,0 +1,31 @@
+.cardPerfis img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 200px;
+  margin-right: 20px;
+}
+
+.cardPerfis {
+  color: #768087;
+  font-weight: 600;
+  margin: 20px 10px;
+  cursor: pointer;
+  padding: 20px;
+  background: #e9f0f8;
+  border-radius: 12px;
+  box-shadow: 1px 1px 1px rgba(255, 255, 255, 0.3),
+    -1px -1px 1px rgba(209, 217, 230, 0.5),
+    inset -2px 2px 5px rgba(209, 217, 230, 0.2),
+    inset 2px -2px 5px rgba(209, 217, 230, 0.2),
+    inset -2px -2px 5px rgba(255, 255, 255, 0.9),
+    inset 2px 2px 5px rgba(209, 217, 230, 0.9);
+  outline: 0;
+  border: 0;
+  display: flex;
+}
+
+.user {
+  font-size: 14px;
+  font-weight: normal;
+}

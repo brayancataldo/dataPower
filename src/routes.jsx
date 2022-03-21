@@ -1,23 +1,37 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import { Route, Switch, BrowserRouter } from "react-router-dom";
-import Covid from "./pages/Covid";
-import Cotacao from "./pages/Cotacao";
-import { Home } from "./pages/Home";
-import RSSReader from "./components/RSSReader";
-import { Estatisticas } from "./pages/Estatisticas";
+import Progress from "./components/Progress";
+import { Buscar } from "./pages/Buscar";
+const Cotacao = lazy(() => import("./pages/Cotacao"));
+const Home = lazy(() => import("./pages/Home"));
+const Estatisticas = lazy(() => import("./pages/Estatisticas"));
+const Covid = lazy(() => import("./pages/Covid"));
+const Perfil = lazy(() => import("./pages/Perfil"));
+const Cadastro = lazy(() => import("./pages/Cadastro"));
+const MeusArquivos = lazy(() => import("./pages/MeusArquivos"));
+const Login = lazy(() => import("./pages/Login"));
+const Tag = lazy(() => import("./pages/Tag"));
 
-export function Routes() {
+export function Routes(username) {
   return (
-    <BrowserRouter>
-      <Switch>
-        <Route path="/" exact={true} component={Home} />
-        <Route path="/configuracoes" component={Home} />
-        <Route path="/home" component={Home} />
-        <Route path="/covid" component={Covid} />
-        <Route path="/cotacao" component={Cotacao} />
-        <Route path="/rss" component={RSSReader} />
-        <Route path="/estatisticas" component={Estatisticas} />
-      </Switch>
-    </BrowserRouter>
+    <Suspense fallback={<Progress forceCenter={true} />}>
+      <BrowserRouter>
+        <Switch>
+          <Route path="/" exact={true} component={Cotacao} />
+          <Route path="/buscar" exact={true} component={Buscar} />
+          <Route path="/buscar/:search" exact={true} component={Buscar} />
+          <Route path="/cadastro" exact={true} component={Cadastro} />
+          <Route path="/configuracoes" exact={true} component={Home} />
+          <Route path="/home" exact={true} component={Home} />
+          <Route path="/estatisticas/covid" exact={true} component={Covid} />
+          <Route path="/cotacao" exact={true} component={Cotacao} />
+          <Route path="/meus-arquivos" exact={true} component={MeusArquivos} />
+          <Route path="/estatisticas" exact={true} component={Estatisticas} />
+          <Route path="/login" exact={true} component={Login} />
+          <Route path="/tag/:id" component={Tag} />
+          <Route path="/:username" component={Perfil} />
+        </Switch>
+      </BrowserRouter>
+    </Suspense>
   );
 }

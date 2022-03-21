@@ -1,31 +1,26 @@
 import React, { useEffect, useState } from "react";
-import { Modal } from "../../components/Modal";
 import "../../global/styles.css";
-import { Cadastrar } from "../../service/usuario";
+import { Entrar } from "../../service/api";
 import { useHistory } from "react-router-dom";
+import { Input } from "../../components/Input";
+import { Button } from "../../components/Button";
 
-export function Cadastro() {
+export default function Login() {
   const [user, setUser] = useState({});
-  const [senhaRepetida, setSenhaRepetida] = useState("");
-  const [mensagem, setMensagem] = useState("Cadastrar");
+  const [showModal, setShowModal] = useState(false);
   const history = useHistory();
 
-  const handleCadastro = async () => {
-    setMensagem("Cadastrando...");
+  const handleLogin = async () => {
     try {
-      const response = await Cadastrar(user);
-      console.log(response);
+      await Entrar(user.nomeUsuario, user.senha);
       history.push("/home");
     } catch (error) {
       console.log(error);
-    } finally {
-      setMensagem("Cadastrado com sucesso!");
     }
   };
 
   return (
     <>
-      <Modal show={false}>aaaaaaa</Modal>
       <div
         style={{
           display: "flex",
@@ -37,53 +32,22 @@ export function Cadastro() {
       >
         <div></div>
         <div className="login">
-          <input
-            className="input2"
+          <Input
             type="text"
-            placeholder="Nome completo"
-            onChange={(e) => setUser({ ...user, nome: e.target.value })}
-            value={user.nome}
-          />
-          <input
-            className="input2"
-            type="text"
-            placeholder="Nome de usuário"
             onChange={(e) => setUser({ ...user, nomeUsuario: e.target.value })}
             value={user.nomeUsuario}
+            title="Nome de usuário"
+            required
           />
-          <input
-            className="input2"
-            type="text"
-            placeholder="E-mail"
-            onChange={(e) => setUser({ ...user, email: e.target.value })}
-            value={user.email}
-          />
-          <input
-            className="input2"
-            type="date"
-            placeholder="Data de nascimento"
-            onChange={(e) =>
-              setUser({ ...user, dataNascimento: e.target.value })
-            }
-            value={user.dataNascimento}
-          />
-          <input
-            className="input2"
+          <Input
             type="password"
-            placeholder="Senha"
             onChange={(e) => setUser({ ...user, senha: e.target.value })}
             value={user.senha}
+            title="Senha"
+            error="As senhas não coincidem"
+            required
           />
-          <input
-            className="input2"
-            type="password"
-            placeholder="Repita a senha"
-            onChange={(e) => setSenhaRepetida(e.target.value)}
-            value={senhaRepetida}
-          />
-          <button className="button" onClick={handleCadastro}>
-            {mensagem}
-          </button>
+          <Button placeholder="Entrar" onClick={handleLogin} />
         </div>
       </div>
     </>

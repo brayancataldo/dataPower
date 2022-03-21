@@ -1,13 +1,12 @@
-import React from 'react'
-import CircularProgress from '@mui/material/CircularProgress';
-import Box from '@mui/material/Box';
+import React from "react";
+import CircularProgress from "@mui/material/CircularProgress";
+import Box from "@mui/material/Box";
+import CenterComponent from "../Center";
 
-export default function Progress() {
-    return (
-        <div style={{justifyContent: "center", alignItems: "center", display: "flex", height: "100vh"}}>
-             <Box sx={{ display: 'flex' }}>
-            <CircularProgress />
-          </Box>
-        </div>
-    )
+export default function Progress({ forceCenter, ...props }) {
+  return (
+    <CenterComponent {...props} force={forceCenter}>
+      <CircularProgress />
+    </CenterComponent>
+  );
 }

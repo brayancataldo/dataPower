@@ -67,7 +67,7 @@ export function Grafico(props) {
                           ? `${
                               (each.Confirmed -
                                 data[index === 0 ? 0 : index - 1].Confirmed) /
-                              1400
+                              2800
                             }%`
                           : `${(each.Deaths / maiorDeaths) * 100}%`
                       }

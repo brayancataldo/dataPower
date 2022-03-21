@@ -10,21 +10,16 @@ import { RiAccountCircleFill } from "react-icons/ri";
 import { IoLogOut } from "react-icons/io5";
 import { MdOutlineBarChart } from "react-icons/md";
 import { useHistory } from "react-router-dom";
+import { getCookieSessionData, Logout } from "../../service/api";
+import { ImSearch } from "react-icons/im";
 
 export function Menu() {
-  const [aba1, setAba1] = useState(false);
-  const [aba2, setAba2] = useState(false);
-  const [aba3, setAba3] = useState(false);
-  const [aba4, setAba4] = useState(false);
-  const [aba5, setAba5] = useState(false);
-  const [aba6, setAba6] = useState(false);
-  const [aba7, setAba7] = useState(false);
-  const [aba8, setAba8] = useState(false);
   const history = useHistory();
+  const usuario = getCookieSessionData();
 
   return (
     <div className="menu">
-      <div className="title">
+      <div className="title" onClick={() => history.push("/")}>
         <MdOutlineBubbleChart
           size="24px"
           style={{ paddingRight: "10px", paddingLeft: "10px" }}
@@ -32,142 +27,59 @@ export function Menu() {
         <p> datapower.com</p>
       </div>
       <Aba
-        clicked={aba1}
         onClick={() => {
-          setAba1(true);
-          setAba2(false);
-          setAba3(false);
-          setAba4(false);
-          setAba5(false);
-          setAba6(false);
-          setAba7(false);
-          setAba8(false);
           history.push("/home");
         }}
         icon={<AiFillHome />}
-        redirect="home"
       >
         Início
       </Aba>
       <Aba
-        clicked={aba2}
         onClick={() => {
-          setAba1(false);
-          setAba2(true);
-          setAba3(false);
-          setAba4(false);
-          setAba5(false);
-          setAba6(false);
-          setAba7(false);
-          setAba8(false);
+          history.push("/buscar");
+        }}
+        icon={<ImSearch size="14px" />}
+      >
+        Buscar
+      </Aba>
+      <Aba
+        onClick={() => {
           history.push("/estatisticas");
         }}
         icon={<MdOutlineBarChart />}
-        redirect="home"
       >
         Estatísticas
       </Aba>
       <Aba
-        clicked={aba3}
         onClick={() => {
-          setAba1(false);
-          setAba2(false);
-          setAba3(true);
-          setAba4(false);
-          setAba5(false);
-          setAba6(false);
-          setAba7(false);
-          setAba8(false);
           history.push("/meus-arquivos");
         }}
         icon={<AiFillFolderOpen />}
-        redirect="home"
       >
         Meus Arquivos
       </Aba>
-      <Aba
-        clicked={aba4}
-        onClick={() => {
-          setAba1(false);
-          setAba2(false);
-          setAba3(false);
-          setAba4(true);
-          setAba5(false);
-          setAba6(false);
-          setAba7(false);
-          setAba8(false);
-        }}
-        icon={<AiFillPushpin />}
-        redirect="home"
-      >
+      <Aba onClick={() => {}} icon={<AiFillPushpin />}>
         Salvos
       </Aba>
-      <Aba
-        clicked={aba5}
-        onClick={() => {
-          setAba1(false);
-          setAba2(false);
-          setAba3(false);
-          setAba4(false);
-          setAba5(true);
-          setAba6(false);
-          setAba7(false);
-          setAba8(false);
-        }}
-        icon={<MdSupervisorAccount />}
-        redirect="home"
-      >
+      <Aba onClick={() => {}} icon={<MdSupervisorAccount />}>
         Amigos
       </Aba>
       <Aba
-        clicked={aba6}
         onClick={() => {
-          setAba1(false);
-          setAba2(false);
-          setAba3(false);
-          setAba4(false);
-          setAba5(false);
-          setAba6(true);
-          setAba7(false);
-          setAba8(false);
-          history.push("/perfil");
+          history.push(`/${usuario.nomeUsuario}`);
         }}
         icon={<RiAccountCircleFill />}
-        redirect="perfil"
       >
         Perfil
       </Aba>
-      <Aba
-        clicked={aba7}
-        onClick={() => {
-          setAba1(false);
-          setAba2(false);
-          setAba3(false);
-          setAba4(false);
-          setAba5(false);
-          setAba6(false);
-          setAba7(true);
-          setAba8(false);
-        }}
-        icon={<MdSettings />}
-        redirect="home"
-      >
+      <Aba onClick={() => {}} icon={<MdSettings />}>
         Configurações
       </Aba>
       <Aba
-        clicked={aba8}
         onClick={() => {
-          setAba1(false);
-          setAba2(false);
-          setAba3(false);
-          setAba4(false);
-          setAba5(false);
-          setAba6(false);
-          setAba7(false);
-          setAba8(true);
+          Logout();
         }}
         icon={<IoLogOut />}
-        redirect="home"
       >
         Sair
       </Aba>

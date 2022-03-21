@@ -1,30 +1,8 @@
-.modal-container .modal {
-  display: flex;
-  justify-content: center;
-  margin-top: 10%;
-}
-
-.modal-container .modal .close-button {
-  padding: 5px;
-  display: flex;
-  width: 100%;
-  justify-content: flex-end;
-}
-
-.modal-container .modal .close-button svg:hover {
-  transition: all 300ms;
-}
-
-.modal-container .modal .close-button svg:hover {
-  background-color: #9c27b0;
-}
-
 .modal {
   display: flex;
-  color: #768087;
-  font-weight: 600;
-  margin-top: 10px;
-  padding: 10px;
+  justify-content: center;
+  min-width: 500px;
+  min-height: 100px;
   background: #e9f0f8;
   border-radius: 12px;
   box-shadow: 1px 1px 1px rgba(255, 255, 255, 0.3),
@@ -34,6 +12,17 @@
     inset -2px -2px 5px rgba(255, 255, 255, 0.9),
     inset 2px 2px 5px rgba(209, 217, 230, 0.9);
   padding: 30px;
+  align-items: center;
+  flex-direction: column;
+  animation: fadeInUp; /* referring directly to the animation's @keyframe declaration */
+  animation-duration: 1s; /* don't forget to set a duration! */
+}
+
+.modal h4 {
+  font-weight: 600;
+  color: #333333;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .modal-container {
