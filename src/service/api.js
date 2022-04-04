@@ -15,7 +15,7 @@ export const Cadastrar = async (data) => {
 
 export const Entrar = async (nomeUsuario, senha) => {
   try {
-    const response = await axios.get(`http://localhost:8080/dataPower/usuario/login?nomeUsuario=${nomeUsuario}&senha=${senha}`)
+    const response = await api.get(`/usuario/login?nomeUsuario=${nomeUsuario}&senha=${senha}`)
   setCookiesSessionData(response.data)
   } catch (error) {
     return false
@@ -23,7 +23,7 @@ export const Entrar = async (nomeUsuario, senha) => {
     return true
 }
 
-const setCookiesSessionData = (data) => {
+export const setCookiesSessionData = (data) => {
     cookies.set(
         'userSession',
         data,
@@ -32,7 +32,7 @@ const setCookiesSessionData = (data) => {
 }
 
 export const Logout = () => {
-  cookies.remove('userSession')
+  cookies.remove('userSession');
 }
 
 export const getCookieSessionData = () => {

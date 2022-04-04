@@ -1,3 +1,4 @@
+import orderBy from "lodash/orderBy";
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useParams } from "react-router-dom";
@@ -5,13 +6,15 @@ import { Button } from "../../components/Button";
 import { CardProfile } from "../../components/CardProfile";
 import { CardRow } from "../../components/CardRow";
 import { Menu } from "../../components/Menu";
-import api from "../../service/api";
+import api, { getCookieSessionData } from "../../service/api";
+import { getDistanceFromLatLonInKm } from "../../util/location";
 
 export const Buscar = () => {
   const { search } = useParams();
   const history = useHistory();
   const [listaUsuarios, setListaUsuarios] = useState([]);
   const [resultados, setResultados] = useState();
+  const usuario = getCookieSessionData();
 
   const listarUsuarios = async () => {
     try {
@@ -28,11 +31,24 @@ export const Buscar = () => {
 
   const pesquisarUsuario = () => {
     if (listaUsuarios.length > 0 && search != undefined && search != "") {
-      console.log(search);
-      const filtrado = listaUsuarios?.filter(
+      const listarPorDistancia = listaUsuarios?.map((each) => {
+        return {
+          ...each,
+          distanceBetweenUser: +getDistanceFromLatLonInKm(
+            { lat: each.latitude, lng: each.longitude },
+            { lat: usuario.latitude, lng: usuario.longitude }
+          ),
+        };
+      });
+      const filtradoPorDistancia = orderBy(
+        listarPorDistancia,
+        "distanceBetweenUser"
+      );
+      const filtrado = filtradoPorDistancia?.filter(
         (each) =>
-          each.nome?.toLowerCase().includes(search.toLowerCase()) ||
-          each.nomeUsuario?.toLowerCase().includes(search.toLowerCase())
+          each.id != usuario.id &&
+          (each.nome?.toLowerCase().includes(search.toLowerCase()) ||
+            each.nomeUsuario?.toLowerCase().includes(search.toLowerCase()))
       );
       console.log(filtrado);
       setResultados(filtrado);

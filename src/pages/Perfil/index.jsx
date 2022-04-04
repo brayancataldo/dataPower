@@ -76,7 +76,7 @@ export default function Perfil() {
           </div>
         </div>
       </main>
-      {!usuario ? <Redirect push to="/login" /> : null}
+      {/* {!usuario ? <Redirect push to="/login" /> : null} */}
     </>
   );
 }

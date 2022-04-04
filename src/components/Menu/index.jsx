@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Aba } from "../Aba";
 import { AiFillHome, AiFillFolderOpen, AiFillPushpin } from "react-icons/ai";
 import {
@@ -12,10 +12,15 @@ import { MdOutlineBarChart } from "react-icons/md";
 import { useHistory } from "react-router-dom";
 import { getCookieSessionData, Logout } from "../../service/api";
 import { ImSearch } from "react-icons/im";
+import { Redirect } from "react-router-dom";
 
 export function Menu() {
   const history = useHistory();
   const usuario = getCookieSessionData();
+
+  useEffect(() => {
+    console.log(usuario);
+  }, []);
 
   return (
     <div className="menu">
@@ -78,11 +83,13 @@ export function Menu() {
       <Aba
         onClick={() => {
           Logout();
+          history.push("/login");
         }}
         icon={<IoLogOut />}
       >
         Sair
       </Aba>
+      {!usuario ? <Redirect push to="/login" /> : null}
     </div>
   );
 }
