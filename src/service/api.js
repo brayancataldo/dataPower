@@ -3,9 +3,14 @@ import Cookies from 'universal-cookie';
 
 const cookies = new Cookies();
 
+const api = axios.create({
+  baseURL: "https://data-power-api.herokuapp.com/dataPower",
+});
+
+
 export const Cadastrar = async (data) => {
   try {
-    const response = await axios.post('http://localhost:8080/dataPower/usuario/save', data)
+    const response = await api.post('/usuario/save', data)
     setCookiesSessionData(response.data)
   } catch (error) {
     return false
@@ -39,8 +44,5 @@ export const getCookieSessionData = () => {
     return cookies.get('userSession');
   };
 
-const api = axios.create({
-  baseURL: "http://localhost:8080/dataPower",
-});
 
 export default api;
