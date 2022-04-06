@@ -296,3 +296,17 @@ div:hover.tooltips span {
   border: 0;
   cursor: pointer;
 }
+
+.linkCadastro {
+  text-align: center;
+  font-size: 13px;
+}
+
+#linkToCadastro {
+  color: #0075c9;
+}
+
+.divCentralizada {
+  display: flex;
+  justify-content: center;
+}

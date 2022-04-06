@@ -5,6 +5,7 @@ import api, { Cadastrar } from "../../service/api";
 import { useHistory } from "react-router-dom";
 import { Input } from "../../components/Input";
 import { Button } from "../../components/Button";
+import { Link } from "react-router-dom";
 
 export default function Cadastro() {
   const [user, setUser] = useState({});
@@ -15,9 +16,8 @@ export default function Cadastro() {
   const [senhaRepetida, setSenhaRepetida] = useState("");
   const history = useHistory();
 
-  const handleCadastro = async () => {
-    console.log("enviar");
-    console.log(user);
+  const handleCadastro = async (e) => {
+    e.preventDefault();
     if (
       !user.nome ||
       !user.nomeUsuario ||
@@ -89,58 +89,76 @@ export default function Cadastro() {
         }}
       >
         <div></div>
-        <div className="login">
-          <Input
-            type="text"
-            onChange={(e) => setUser({ ...user, nome: e.target.value })}
-            value={user.nome}
-            title="Nome completo"
-            required
-          />
-          <Input
-            type="text"
-            onChange={(e) => setUser({ ...user, nomeUsuario: e.target.value })}
-            value={user.nomeUsuario}
-            title="Nome de usuário"
-            isInvalid={usuarioUsado}
-            error="Usuário já existente"
-            required
-          />
-          <Input
-            type="text"
-            onChange={(e) => setUser({ ...user, email: e.target.value })}
-            value={user.email}
-            title="E-mail"
-            required
-          />
-          <Input
-            type="date"
-            onChange={(e) =>
-              setUser({ ...user, dataNascimento: e.target.value })
-            }
-            value={user.dataNascimento}
-            title="Data de Nascimento"
-            required
-          />
-          <Input
-            type="password"
-            onChange={(e) => setUser({ ...user, senha: e.target.value })}
-            value={user.senha}
-            title="Senha"
-            isInvalid={senhasDiferentes && user.senha}
-            error="As senhas não coincidem"
-            required
-          />
-          <Input
-            type="password"
-            onChange={(e) => setSenhaRepetida(e.target.value)}
-            value={senhaRepetida}
-            title="Repita a senha"
-            isInvalid={senhasDiferentes && senhaRepetida}
-            error="As senhas não coincidem"
-            required
-          />
-          <Button placeholder="Enviar" onClick={handleCadastro} />
+        <div>
+          <div className="login">
+            <form onSubmit={handleCadastro}>
+              <Input
+                type="text"
+                onChange={(e) => setUser({ ...user, nome: e.target.value })}
+                value={user.nome}
+                title="Nome completo"
+                required
+              />
+              <Input
+                type="text"
+                onChange={(e) =>
+                  setUser({ ...user, nomeUsuario: e.target.value })
+                }
+                value={user.nomeUsuario}
+                title="Nome de usuário"
+                isInvalid={usuarioUsado}
+                error="Usuário já existente"
+                required
+              />
+              <Input
+                type="text"
+                onChange={(e) => setUser({ ...user, email: e.target.value })}
+                value={user.email}
+                title="E-mail"
+                required
+              />
+              <Input
+                type="date"
+                onChange={(e) =>
+                  setUser({ ...user, dataNascimento: e.target.value })
+                }
+                value={user.dataNascimento}
+                title="Data de Nascimento"
+                required
+              />
+              <Input
+                type="password"
+                onChange={(e) => setUser({ ...user, senha: e.target.value })}
+                value={user.senha}
+                title="Senha"
+                isInvalid={senhasDiferentes && user.senha}
+                error="As senhas não coincidem"
+                required
+              />
+              <Input
+                type="password"
+                onChange={(e) => setSenhaRepetida(e.target.value)}
+                value={senhaRepetida}
+                title="Repita a senha"
+                isInvalid={senhasDiferentes && senhaRepetida}
+                error="As senhas não coincidem"
+                required
+              />
+              <div className="divCentralizada">
+                <Button
+                  placeholder="Enviar"
+                  onClick={handleCadastro}
+                  type="submit"
+                />
+              </div>
+            </form>
+          </div>
+          <p className="linkCadastro">
+            Já possui conta?{" "}
+            <Link id="linkToCadastro" to="/login">
+              Entre
+            </Link>
+          </p>
         </div>
       </div>
     </>
