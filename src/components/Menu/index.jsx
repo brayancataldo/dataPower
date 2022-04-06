@@ -89,7 +89,7 @@ export function Menu() {
       >
         Sair
       </Aba>
-      {!usuario ? <Redirect push to="/login" /> : null}
+      {!usuario && <Redirect push to="/login" />}
     </div>
   );
 }

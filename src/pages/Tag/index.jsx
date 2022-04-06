@@ -34,7 +34,6 @@ export default function Tag() {
           <p>{tag.descricao}</p>
         </div>
       </main>
-      {!usuario ? <Redirect push to="/login" /> : null}
     </>
   );
 }

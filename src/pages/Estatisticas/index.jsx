@@ -66,7 +66,6 @@ function Estatisticas() {
             />
           </div> */}
       </main>
-      {/* {!usuario ? <Redirect push to="/login" /> : null} */}
     </>
   );
 }

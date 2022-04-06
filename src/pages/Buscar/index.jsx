@@ -31,19 +31,19 @@ export const Buscar = () => {
 
   const pesquisarUsuario = () => {
     if (listaUsuarios.length > 0 && search != undefined && search != "") {
-      const listarPorDistancia = listaUsuarios?.map((each) => {
-        return {
-          ...each,
-          distanceBetweenUser: +getDistanceFromLatLonInKm(
-            { lat: each.latitude, lng: each.longitude },
-            { lat: usuario.latitude, lng: usuario.longitude }
-          ),
-        };
-      });
-      const filtradoPorDistancia = orderBy(
-        listarPorDistancia,
-        "distanceBetweenUser"
-      );
+      const lista = listaUsuarios;
+      if (usuario.latitude && usuario.longitude) {
+        lista = listaUsuarios?.map((each) => {
+          return {
+            ...each,
+            distanceBetweenUser: +getDistanceFromLatLonInKm(
+              { lat: each.latitude, lng: each.longitude },
+              { lat: usuario.latitude, lng: usuario.longitude }
+            ),
+          };
+        });
+      }
+      const filtradoPorDistancia = orderBy(lista, "distanceBetweenUser");
       const filtrado = filtradoPorDistancia?.filter(
         (each) =>
           each.id != usuario.id &&
