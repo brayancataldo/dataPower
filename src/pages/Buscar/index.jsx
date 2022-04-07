@@ -31,7 +31,7 @@ export const Buscar = () => {
 
   const pesquisarUsuario = () => {
     if (listaUsuarios.length > 0 && search != undefined && search != "") {
-      const lista = listaUsuarios;
+      let lista = listaUsuarios;
       if (usuario.latitude && usuario.longitude) {
         lista = listaUsuarios?.map((each) => {
           return {
@@ -47,10 +47,13 @@ export const Buscar = () => {
       const filtrado = filtradoPorDistancia?.filter(
         (each) =>
           each.id != usuario.id &&
-          (each.nome?.toLowerCase().includes(search.toLowerCase()) ||
+          (each.nome
+            ?.normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "")
+            .toLowerCase()
+            .includes(search.toLowerCase()) ||
             each.nomeUsuario?.toLowerCase().includes(search.toLowerCase()))
       );
-      console.log(filtrado);
       setResultados(filtrado);
       return;
     }

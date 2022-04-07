@@ -25,6 +25,10 @@
   display: flex;
 }
 
+#imgProfile:hover {
+  opacity: 0;
+}
+
 .user {
   font-size: 14px;
   font-weight: normal;

@@ -11,7 +11,7 @@ export default function Perfil() {
   const [user, setUser] = useState({});
   const [tags, setTags] = useState();
   const history = useHistory();
-
+  const [selectedFile, setSelectedFile] = useState(null);
   useEffect(() => {
     findUser();
     findTags();
@@ -33,6 +33,10 @@ export default function Perfil() {
     } catch (error) {}
   };
 
+  const handleInput = (image) => {
+    console.log(image);
+  };
+
   return (
     <>
       <title>
@@ -42,16 +46,32 @@ export default function Perfil() {
       <main>
         <div className="profile">
           <div id="cont">
-            <img src={user.foto} />
+            <img
+              className="img-default"
+              src={user.foto || "https://i.stack.imgur.com/l60Hf.png"}
+            />
+            <div className="img-hover">
+              <div id="wrap" className="img-hover">
+                <h3>Editar foto</h3>
+                <input
+                  type="file"
+                  className="file_upload"
+                  accept="application/pdf"
+                  // value={selectedFile}
+                  onChange={(e) => {
+                    console.log(e.target.files[0]);
+                    setSelectedFile(e.target.files[0]);
+                  }}
+                />
+              </div>
+            </div>
           </div>
           <div id="infos">
             <div id="numbers">
-              {/* <p>{user.tags}</p>
-              <p>{user.seguidores}</p>
-              <p>{user.seguindo}</p> */}
+              {/* <p>{user.tags}</p> */}
+              <p>{user.seguidores} seguidores</p>
+              <p>{user.seguindo} seguindo</p>
               <p>3 tags</p>
-              <p>192 seguidores</p>
-              <p>203 seguindo</p>
             </div>
             <div>
               <p>{user.nome}</p>
@@ -60,7 +80,7 @@ export default function Perfil() {
               <p>@{user.nomeUsuario}</p>
             </div>
             <div>
-              <p>Dev front end</p>
+              <p>{user.bio}</p>
             </div>
             <div id="tags">
               {tags &&

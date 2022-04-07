@@ -11,6 +11,7 @@
   padding-left: 30vh;
   padding-right: 30vh;
   justify-content: space-evenly;
+  border-radius: 200px;
 }
 
 .profile #numbers {
@@ -64,4 +65,70 @@
   height: 205px;
   object-fit: cover;
   border-radius: 200px;
+}
+
+.profile div.img-hover {
+  display: none;
+}
+.profile:hover img.img-default {
+  display: none;
+}
+.profile:hover div.img-hover {
+  display: inherit;
+}
+
+.img-hover {
+  background-color: #333333;
+  width: 100%;
+  border-radius: 200px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.img-hover h3 {
+  color: #ffffff;
+}
+
+.inputField {
+  /* opacity: 0; */
+  display: none;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  background-color: red;
+  border-radius: 200px;
+}
+
+#wrap {
+  position: relative;
+  width: 205px;
+  height: 205px;
+  line-height: 30px;
+  border-radius: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.file_upload {
+  cursor: pointer;
+  opacity: 0;
+  /* IE 8 */
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  /* IE 5-7 */
+  filter: alpha(opacity=0);
+  /* Netscape or and older firefox browsers */
+  -moz-opacity: 0;
+  /* older Safari browsers */
+  -khtml-opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
 }
