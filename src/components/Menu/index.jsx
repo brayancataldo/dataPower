@@ -13,6 +13,7 @@ import { useHistory } from "react-router-dom";
 import { getCookieSessionData, Logout } from "../../service/api";
 import { ImSearch } from "react-icons/im";
 import { Redirect } from "react-router-dom";
+import "./styles.css";
 
 export function Menu() {
   const history = useHistory();
@@ -55,6 +56,22 @@ export function Menu() {
       >
         Estatísticas
       </Aba>
+      {/* <Aba
+        onClick={() => {
+          history.push("/png-generator");
+        }}
+        icon={<AiFillHome />}
+      >
+        Png Generator
+      </Aba>
+      <Aba
+        onClick={() => {
+          history.push("/play");
+        }}
+        icon={<BiGame />}
+      >
+        Play
+      </Aba> */}
       <Aba
         onClick={() => {
           history.push("/meus-arquivos");

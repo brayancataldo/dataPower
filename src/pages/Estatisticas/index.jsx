@@ -13,10 +13,10 @@ function Estatisticas() {
   const usuario = getCookieSessionData();
 
   return (
-    <>
+    <div className="container1">
       <title>Estatísticas</title>
       <Menu />
-      <main>
+      <div>
         <div>
           <input
             className="input"
@@ -65,8 +65,8 @@ function Estatisticas() {
               style={{ margin: "5px" }}
             />
           </div> */}
-      </main>
-    </>
+      </div>
+    </div>
   );
 }
 

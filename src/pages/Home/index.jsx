@@ -38,7 +38,7 @@ export default function Home() {
   };
 
   return (
-    <>
+    <div className="container1">
       <title>Home</title>
       <Menu />
       <Modal show={showModal} title="Permita acesso a localização">
@@ -47,7 +47,6 @@ export default function Home() {
           OK
         </Button>
       </Modal>
-      <main>a</main>
-    </>
+    </div>
   );
 }

@@ -113,7 +113,7 @@ export default function Covid() {
   }, []);
 
   return (
-    <>
+    <div className="container1">
       <Menu />
       <title>Covid</title>
       <main>
@@ -267,6 +267,6 @@ export default function Covid() {
           </>
         )}
       </main>
-    </>
+    </div>
   );
 }

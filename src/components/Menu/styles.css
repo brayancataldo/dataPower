@@ -1,0 +1,9 @@
+.menu {
+  background: #e9f0f8;
+  /* width: 30vh; */
+  height: 100vh;
+  /* position: fixed; */
+  padding: 1.5em;
+  box-shadow: -10px -10px 30px #ffffff, 10px 10px 30px rgba(174, 174, 192, 0.4);
+  border-radius: 20px;
+}

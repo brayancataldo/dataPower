@@ -118,10 +118,10 @@ export default function Cotacao() {
   }, []);
 
   return (
-    <>
+    <div className="container1">
       <title>Cotação</title>
       <Menu />
-      <main>
+      <div>
         {loading ? (
           <div
             style={{
@@ -207,7 +207,7 @@ export default function Cotacao() {
             </div>
           </>
         )}
-      </main>
-    </>
+      </div>
+    </div>
   );
 }

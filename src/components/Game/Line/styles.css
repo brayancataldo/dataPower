@@ -1,0 +1,12 @@
+.line {
+  display: flex;
+  height: 100px;
+  margin: 10px;
+}
+
+.inp {
+  width: 60px;
+  height: 60px;
+  font-size: 80px;
+  text-align: center;
+}

@@ -65,32 +65,30 @@ export const Buscar = () => {
   }, [search, listaUsuarios]);
 
   return (
-    <>
+    <div className="container1">
       <title>Buscar</title>
       <Menu />
-      <main>
-        <div>
-          <input
-            className="input"
-            type="text"
-            placeholder="Buscar"
-            onChange={(e) => history.push(`/buscar/${e.target.value}`)}
-            value={search}
-          />
-          <Button placeholder="Pesquisar" onClick={pesquisarUsuario} />
-          <div style={{ display: "flex" }}>
-            {resultados &&
-              resultados.map((each) => (
-                <CardProfile
-                  nome={each.nome}
-                  user={each.nomeUsuario}
-                  src={each.foto}
-                  onClick={() => history.push(`/${each.nomeUsuario}`)}
-                />
-              ))}
-          </div>
+      <div>
+        <input
+          className="input"
+          type="text"
+          placeholder="Buscar"
+          onChange={(e) => history.push(`/buscar/${e.target.value}`)}
+          value={search}
+        />
+        <Button placeholder="Pesquisar" onClick={pesquisarUsuario} />
+        <div style={{ display: "flex" }}>
+          {resultados &&
+            resultados.map((each) => (
+              <CardProfile
+                nome={each.nome}
+                user={each.nomeUsuario}
+                src={each.foto}
+                onClick={() => history.push(`/${each.nomeUsuario}`)}
+              />
+            ))}
         </div>
-      </main>
-    </>
+      </div>
+    </div>
   );
 };

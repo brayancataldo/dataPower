@@ -38,64 +38,68 @@ export default function Perfil() {
   };
 
   return (
-    <>
+    <div className="container1">
       <title>
         {user.nome} (@{user.nomeUsuario})
       </title>
       <Menu />
-      <main>
-        <div className="profile">
-          <div id="cont">
-            <img
-              className="img-default"
-              src={user.foto || "https://i.stack.imgur.com/l60Hf.png"}
-            />
-            <div className="img-hover">
-              <div id="wrap" className="img-hover">
-                <h3>Editar foto</h3>
-                <input
-                  type="file"
-                  className="file_upload"
-                  accept="application/pdf"
-                  // value={selectedFile}
-                  onChange={(e) => {
-                    console.log(e.target.files[0]);
-                    setSelectedFile(e.target.files[0]);
-                  }}
-                />
-              </div>
-            </div>
-          </div>
-          <div id="infos">
-            <div id="numbers">
-              {/* <p>{user.tags}</p> */}
-              <p>{user.seguidores} seguidores</p>
-              <p>{user.seguindo} seguindo</p>
-              <p>3 tags</p>
-            </div>
-            <div>
-              <p>{user.nome}</p>
-            </div>
-            <div>
-              <p>@{user.nomeUsuario}</p>
-            </div>
-            <div>
-              <p>{user.bio}</p>
-            </div>
-            <div id="tags">
-              {tags &&
-                tags.map((each) => (
-                  <button
-                    title={each.descricao}
-                    onClick={() => history.push(`/tag/${each.id}`)}
-                  >
-                    {each.nome}
-                  </button>
-                ))}
+      <div className="profile">
+        <div id="cont">
+          <img
+            className="img-default"
+            src={user.foto || "https://i.stack.imgur.com/l60Hf.png"}
+          />
+          <div className="img-hover">
+            <div id="wrap" className="img-hover">
+              <h3>Editar foto</h3>
+              <input
+                type="file"
+                className="file_upload"
+                accept="application/pdf"
+                // value={selectedFile}
+                onChange={(e) => {
+                  console.log(e.target.files[0]);
+                  setSelectedFile(e.target.files[0]);
+                }}
+              />
             </div>
           </div>
         </div>
-      </main>
-    </>
+        <div id="infos">
+          <div id="numbers">
+            {/* <p>{user.tags}</p> */}
+            <p>{user.seguidores} seguidores</p>
+            <p>{user.seguindo} seguindo</p>
+            <p>3 tags</p>
+          </div>
+          <div>
+            <p>{user.nome}</p>
+          </div>
+          <div>
+            <p>@{user.nomeUsuario}</p>
+            <button
+              onClick={() => history.push(`/chat/${user.nomeUsuario}`)}
+              className="input pointer"
+            >
+              Enviar Mensagem
+            </button>
+          </div>
+          <div>
+            <p>{user.bio}</p>
+          </div>
+          <div id="tags">
+            {tags &&
+              tags.map((each) => (
+                <button
+                  title={each.descricao}
+                  onClick={() => history.push(`/tag/${each.id}`)}
+                >
+                  {each.nome}
+                </button>
+              ))}
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }

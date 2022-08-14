@@ -1,0 +1,78 @@
+.chat {
+  height: 80vh;
+  overflow-y: scroll;
+  justify-content: flex-end;
+  flex-direction: column;
+}
+
+.head {
+  height: 10vh;
+  align-items: center;
+  display: flex;
+  box-shadow: -10px -10px 30px #ffffff, 10px 10px 30px rgba(174, 174, 192, 0.4);
+}
+
+.nome-usuario {
+  font-size: 10px;
+}
+
+.nome {
+  font-size: 12px;
+}
+
+.container-nome {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.profile-picture {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 200px;
+  margin: 20px;
+}
+
+.input-area {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cloud {
+  background: white;
+  margin: 4px 20px;
+  height: 50px;
+  max-width: 65%;
+  border-radius: 50px;
+  padding: 0px 20px;
+}
+
+.right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.left {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.input-area input {
+  width: 100%;
+  margin: 15px;
+}
+
+.parte1 {
+  flex: 6;
+}
+
+.parte2 {
+  flex: 3;
+}
+
+@media (max-width: 1020px) {
+  .parte2 {
+    display: none;
+  }
+}

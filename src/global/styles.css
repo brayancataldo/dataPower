@@ -10,20 +10,16 @@ body {
   height: 100vh;
 }
 
-.menu {
-  background: #e9f0f8;
-  /* width: 30vh; */
-  height: 100vh;
-  position: fixed;
-  padding: 1.5em;
-  box-shadow: -10px -10px 30px #ffffff, 10px 10px 30px rgba(174, 174, 192, 0.4);
-  border-radius: 20px;
+.container1 {
+  display: flex;
+  flex-direction: row;
 }
 
 main {
   /* background: #0075c9; */
-  margin-left: 220px;
-  padding: 1em;
+  /* margin-left: 220px; */
+  /* padding: 1em; */
+
   flex-direction: column;
   display: flex;
   justify-content: center;
@@ -102,18 +98,6 @@ main {
   font-size: 10px;
 }
 
-/* .card {
-  background: #e9f0f8;
-  border-radius: 12px;
-  box-shadow: 1px 1px 1px rgba(255, 255, 255, 0.3),
-    -1px -1px 1px rgba(209, 217, 230, 0.5),
-    inset -2px 2px 5px rgba(209, 217, 230, 0.2),
-    inset 2px -2px 5px rgba(209, 217, 230, 0.2),
-    inset -2px -2px 5px rgba(255, 255, 255, 0.9),
-    inset 2px 2px 5px rgba(209, 217, 230, 0.9);
-  width: 900px;
-  cursor: pointer;
-} */
 .card #fotoPerfil {
   padding: 15px;
   background: red;
